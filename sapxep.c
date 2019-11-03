@@ -1,10 +1,10 @@
 #include <stdio.h>
 #include <math.h>
 
-void Nhap(double (*a)[], unsigned int n);
+void Nhap(double a[], unsigned int n);
 void Xuat(double a[], unsigned int n);
 int Tim(double a[], unsigned int n, double x);
-void SapXep(double (*a)[], unsigned int n);
+void SapXep(double a[], unsigned int n);
 
 int main() {
 	unsigned int n;
@@ -28,13 +28,13 @@ int main() {
 	return 0;
 }
 
-void Nhap(double (*a)[], unsigned int n) {
+void Nhap(double a[], unsigned int n) {
 	double tmp;
 	int i;
 	printf("Nhap day so: ");
 	for (i = 0; i < n; ++i) {
 		scanf("%lg", &tmp);
-		(*a)[i] = tmp;
+		a[i] = tmp;
 	}
 }
 
@@ -53,16 +53,16 @@ int Tim(double a[], unsigned int n, double x) {
 	return -1;
 }
 
-void SapXep(double (*a)[], unsigned int n) {
+void SapXep(double a[], unsigned int n) {
 	int i, j;
 	for (i = 0; i < n; i++) {
 		int min_id = i;
 		for (j = i; j < n; j++)
-			if ((*a)[j] < (*a)[min_id])
+			if (a[j] < a[min_id])
 				min_id = j;
-		double min = (*a)[min_id];
-		(*a)[min_id] = (*a)[i];
-		(*a)[i] = min;
+		double min = a[min_id];
+		a[min_id] = a[i];
+		a[i] = min;
 	}
 }
 

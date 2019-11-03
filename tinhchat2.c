@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <math.h>
 
-void Nhap(int (*a)[], unsigned int n);
+void Nhap(int a[], unsigned int n);
 void Xuat(int a[], unsigned int n);
 int TimPT(int a[], unsigned int n, int x);
-void Chen(int (*a)[], unsigned int *n, unsigned int vt, int x);
-void Xoa(int (*a)[], unsigned int *n, int x);
+void Chen(int a[], unsigned int *n, unsigned int vt, int x);
+void Xoa(int a[], unsigned int *n, int x);
 
 int main() {
 	unsigned int n;
@@ -27,12 +27,12 @@ int main() {
 	return 0;
 }
 
-void Nhap(int (*a)[], unsigned int n) {
+void Nhap(int a[], unsigned int n) {
 	int tmp, i;
 	printf("Nhap day so: ");
 	for (i = 0; i < n; ++i) {
 		scanf("%i", &tmp);
-		(*a)[i] = tmp;
+		a[i] = tmp;
 	}
 }
 
@@ -63,20 +63,20 @@ int TimPT(int a[], unsigned int n, int x) {
 	return -1;
 }
 
-void Chen(int (*a)[], unsigned int *n, unsigned int vt, int x) {
+void Chen(int a[], unsigned int *n, unsigned int vt, int x) {
 	int i;
 	(*n)++;
 	for (i = *n; i > vt; i--)
-		(*a)[i] = (*a)[i-1];
-	(*a)[vt] = x;
+		a[i] = a[i-1];
+	a[vt] = x;
 }
 
-void Xoa(int (*a)[], unsigned int *n, int x) {
+void Xoa(int a[], unsigned int *n, int x) {
 	int i;
 	x = TimPT(*a, *n, x);
 	if (x != -1) {
 		for (i = x; i < *n; i++)
-			(*a)[i] = (*a)[i+1];
+			a[i] = a[i+1];
 		(*n)--;
 	}
 }

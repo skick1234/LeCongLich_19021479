@@ -1,9 +1,9 @@
 #include <stdio.h>
 
-void Nhap(int (*a)[], unsigned int n);
+void Nhap(int a[], unsigned int n);
 void Xuat(int a[], unsigned int n);
 int NguyenTo(int n);
-double SapXep(int (*a)[], unsigned int n);
+double SapXep(int a[], unsigned int n);
 
 int main() {
 	unsigned int n;
@@ -17,12 +17,12 @@ int main() {
 	return 0;
 }
 
-void Nhap(int (*a)[], unsigned int n) {
+void Nhap(int a[], unsigned int n) {
 	int i, tmp;
 	printf("Nhap day so: ");
 	for (i = 0; i < n; ++i) {
 		scanf("%i", &tmp);
-		(*a)[i] = tmp;
+		a[i] = tmp;
 	}
 }
 
@@ -44,15 +44,15 @@ int NguyenTo(int n) {
 	return 1;
 }
 
-double SapXep(int (*a)[], unsigned int n) {
+double SapXep(int a[], unsigned int n) {
 	int i, j;
 	for (i = 0; i < n; i++) {
 		int max_id = i;
 		for (j = i; j < n; j++)
-			if ((*a)[j] > (*a)[max_id])
+			if (a[j] > a[max_id])
 				max_id = j;
-		int max = (*a)[max_id];
-		(*a)[max_id] = (*a)[i];
-		(*a)[i] = max;
+		int max = a[max_id];
+		a[max_id] = a[i];
+		a[i] = max;
 	}
 }

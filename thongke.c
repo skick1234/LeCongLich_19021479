@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <math.h>
 
-void Nhap(double (*a)[], unsigned int n);
+void Nhap(double a[], unsigned int n);
 double TrungBinh(double a[], unsigned int n);
 double DoLechChuan(double a[], unsigned int n);
 
@@ -16,13 +16,13 @@ int main() {
 	return 0;
 }
 
-void Nhap(double (*a)[], unsigned int n) {
+void Nhap(double a[], unsigned int n) {
 	double tmp;
 	int i;
 	printf("Nhap day so: ");
 	for (i = 0; i < n; ++i) {
 		scanf("%lg", &tmp);
-		(*a)[i] = tmp;
+		a[i] = tmp;
 	}
 }
 
