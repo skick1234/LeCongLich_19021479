@@ -15,7 +15,7 @@ int main()
     long int b[m+1] = {};
     for (int i = 0; i < n; i++) {
         if (b[abs(a[i])] + a[i] == 0) {
-            cout << "Cap so co tong = 0: \t" << -abs(a[i]) << ", " << abs(a[i])  << endl;
+            cout << "Cap so co tong = 0: \t" << -abs(a[i]) << " & " << abs(a[i])  << endl;
             break;
         } else b[abs(a[i])] = a[i];
     }
