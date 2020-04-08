@@ -11,11 +11,14 @@ int main() {
     int n, input, mi, ma, s = 0, c = 0;
     inp >> n;
     vector<int> a(10);
-    for (int i = 0; i < n; i++) {
+
+    for (int i = 0; i < 10; i++) {
         inp >> input;
-        a.push_back(input);
+        a[input]++;
     }
-    out << mi << endl << ma << endl << s << endl << c;
+
+    for (int i = 0; i < 10; i++)
+        out << i << ':' << a[i] << endl;
 
     inp.close();
     out.close();
