@@ -1,47 +1,92 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-void Nhap(float* a, int n) {
-    int i;
-    for (i = 0; i < n; i++) {
-        do {
-            printf("a[%i] = ", i);
-            scanf("%f", (a+i));
-            if (*(a+i) <= 0) printf("Khong phai la so duong\n");
-        } while (*(a+i) <= 0);
-    }
-}
+#define N 100
 
-void Xuat(float* a, int n) {
-    int i;
-    for (i = 0; i < n; i++)
-        printf("%g ", *(a+i));
-}
-
-float Tong(float* a, int n) {
-    int i;
-    float s = 0;
-    for (i = 0; i < n; i++)
-        s += *(a+i);
-    return s;
-}
-
-float Min(float* a, int n) {
-    int i;
-    float min = *a;
-    for (i = 1; i < n; i++)
-        if (*(a+i) < min) min = *(a+i);
-    return min;
-}
+void nhapfile(char tenfile[], int* mang, int* soluong);
+void xuatfile(char tenfile[], int* mang, int soluong);
+void hienthimang(int* mang, int n);
+void sapxep(int* mang, int soluong);
+int tongpt(int* mang, int soluong);
 
 int main() {
-    int n;
-    printf("Nhap so phan tu cua mang: ");
-    scanf("%i", &n);
-    float a[n];
-    Nhap(a, n);
-    printf("\nMang vua nhap la:\n");
-    Xuat(a, n);
-    printf("\nPhan tu nho nhat la: %g\n", Min(a, n));
-    printf("Tong cac phan tu la: %g\n", Tong(a, n));
-    return 0;
+	int mang[N], soluong;
+	char tenfile[50];
+	printf("Nhap ten file chua day so: ");
+	gets(tenfile);
+	fflush(stdin);
+	nhapfile(tenfile, mang, &soluong);
+	printf("\nDay so da nhap la:\n");
+	hienthimang(mang, soluong);
+
+	sapxep(mang, soluong);
+	printf("Day so sau khi sap xep la:\n");
+	hienthimang(mang, soluong);
+
+	printf("Tong cac phan tu cua mang la: %d\n\n", tongpt(mang, soluong));
+
+	printf("Nhap ten file luu mang: ");
+	gets(tenfile);
+	fflush(stdin);
+	xuatfile(tenfile, mang, soluong);
+	return 0;
+}
+
+void nhapfile(char tenfile[], int* mang, int* soluong) {
+	FILE* f;
+	f = fopen(tenfile, "r");
+	int i = 0;
+	if (f == NULL) {
+		fclose(f);
+		printf("File khong ton tai, tao file du lieu moi.\nNhap so phan tu cua day so: ");
+		scanf("%d", soluong);
+		f = fopen(tenfile, "w");
+		for(i = 0; i < *soluong; i++) {
+			printf("Nhap phan tu %d: ", i+1);
+			scanf("%d", &mang[i]);
+			fflush(stdin);
+			putw(mang[i], f);
+		}
+	} else {
+		int n;
+		while ((n = getw(f)) != EOF)
+			mang[i++] = n;
+		*soluong = i;
+	}
+	fclose(f);
+}
+
+void xuatfile(char tenfile[], int* mang, int soluong) {
+	FILE* f = fopen(tenfile, "w");
+	int i;
+	for (i = 0; i < soluong; i++)
+		putw(mang[i], f);
+	fclose(f);
+}
+
+void hienthimang(int* mang, int n) {
+	int i;
+	for(i=0; i<n; i++)
+		printf("%d ", mang[i]);
+	printf("\n");
+}
+
+void sapxep(int* mang, int soluong) {
+	int i, j;
+	for (i = 0; i < soluong; i++) {
+		int min_id = i;
+		for (j = i; j < soluong; j++)
+			if (mang[j] < mang[min_id])
+				min_id = j;
+		int min = mang[min_id];
+		mang[min_id] = mang[i];
+		mang[i] = min;
+	}
+}
+
+int tongpt(int* mang, int soluong) {
+	int tongpt = 0, i;
+	for (i = 0; i < soluong; i++)
+		tongpt += mang[i];
+	return tongpt;
 }
