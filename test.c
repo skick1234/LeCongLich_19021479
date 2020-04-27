@@ -45,6 +45,7 @@ void nhapfile(char tenfile[], int* mang, int* soluong) {
 			do {
 				printf("Nhap phan tu %d ( > 0): ", i+1);
 				scanf("%d", &mang[i]);
+				fflush(stdin);
 			} while (mang[i] <= 0);
 			putw(mang[i], f);
 		}
