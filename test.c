@@ -42,9 +42,11 @@ void nhapfile(char tenfile[], int* mang, int* soluong) {
 		scanf("%d", soluong);
 		f = fopen(tenfile, "w");
 		for(i = 0; i < *soluong; i++) {
-			printf("Nhap phan tu %d: ", i+1);
-			scanf("%d", &mang[i]);
-			fflush(stdin);
+			do {
+				printf("Nhap phan tu %d ( > 0): ", i+1);
+				scanf("%d", &mang[i]);
+				fflush(stdin);
+			} while (mang[i] <= 0);
 			putw(mang[i], f);
 		}
 	} else {
