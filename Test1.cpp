@@ -1,17 +1,30 @@
 #include <bits/stdc++.h>
+
 using namespace std;
 
 string run(string num, int k) {
-	int n = num.length();
-	if (k >= n) return "0";
-	string s = "";
-	for (char ch: num) {
-		while (s.length() && s.back() > ch && k) s.pop_back(), k--;
-		if (s.length() || ch != '0') s.push_back(ch);
+	vector < char > stk;
+	int i = 0, removedCount = 0;
+
+	while (i < num.length() and removedCount < k) {
+		if (stk.empty() or num[i] >= stk.back())
+			stk.push_back(num[i++]);
+		else
+			stk.pop_back(), removedCount++;
 	}
-	while (s.length() && k--)
-		s.pop_back();
-	return s.length() != 0 ? s : "0";
+
+	while (removedCount++ < k)
+		stk.pop_back();
+
+	while (i < num.length())
+		stk.push_back(num[i++]);
+	int j = 0;
+	while (j < stk.size() and stk[j] == '0')
+		j++;
+
+	string result(stk.begin() + j, stk.end());
+
+	return result == "" ? "0" : result;
 }
 
 int main() {
