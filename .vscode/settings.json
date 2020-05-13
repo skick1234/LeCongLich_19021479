@@ -6,6 +6,7 @@
         "stdlib.h": "c",
         "xstring": "cpp",
         "initializer_list": "cpp",
-        "xutility": "cpp"
+        "xutility": "cpp",
+        "string": "cpp"
     }
 }
