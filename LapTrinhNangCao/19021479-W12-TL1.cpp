@@ -87,7 +87,7 @@ struct Doubly_Linked_List {
 };
 
 int main() {
-	system("cls");
+    system("cls");
     Doubly_Linked_List list;
     int n, k;
     do {
@@ -98,16 +98,19 @@ int main() {
         cout << "Nhap so dem > 0: ";
         cin >> k;
     } while (k <= 0);
-	for (int i = 1; i <= n; i++)
-		list.addLast(i);
-    Node* current = list.head;
-    cout << "So thu tu con lai sau moi luot la: " << endl;
+    for (int i = 1; i <= n; i++)
+        list.addLast(i);
+    Node *current = list.head;
+    cout << "Ban co muon hien thi nguoi choi con lai sau moi luot khong? (Y/N) ";
+    char hienthi;
+    cin >> hienthi;
+    if (hienthi == 'Y' || hienthi == 'y') cout << "So thu tu con lai sau moi luot la: " << endl;
     while (list.head != list.tail) {
-        list.print();
+        if (hienthi == 'Y' || hienthi == 'y') list.print();
         for (int i = 0; i < k; i++)
             current = (current == list.tail ? list.head : current->next);
-        list.deleteNode(current->prev);
+        list.deleteNode(current->prev ? current->prev : list.tail);
     }
-    list.print();
+    cout << "Nguoi choi dung vi tri so " << list.head->stt << " se khong chet.";
     return 0;
 }
