@@ -34,7 +34,7 @@ void updateSuggest(string& guessedWord, const string& word, int& suggested, int&
         for (int i = 0; i < n; i++)
             if (guessedWord[i] == '-')
                 c++;
-        maxSuggest = c / 2;
+        maxSuggest = c / 2 + suggested;
     }
 }
 
@@ -162,7 +162,9 @@ int main(int argc, char* argv[]) {
     string fileName = argc > 1 ? argv[1] : "words.txt";
     int win = 0, lose = 0;
     bool hangmanPlaying = true;
+    bool quit = false;
     while (hangmanPlaying) {
+        system("cls");
         string word = chooseWord(fileName);
         if (word.empty()) {
             cout << "No word available in " << fileName << endl;
@@ -181,7 +183,11 @@ int main(int argc, char* argv[]) {
             char guess = '~';
             SDL_Event e;
             if (SDL_PollEvent(&e)) {
-                if (e.type == SDL_QUIT || (e.type == SDL_KEYUP && e.key.keysym.sym == SDLK_ESCAPE)) {
+                if (e.type == SDL_QUIT) {
+                    hangmanPlaying = false;
+                    quit = true;
+                    break;
+                } else if (e.type == SDL_KEYUP && e.key.keysym.sym == SDLK_ESCAPE) {
                     hangmanPlaying = false;
                     break;
                 } else if (e.type == SDL_KEYUP) {
@@ -217,11 +223,12 @@ int main(int argc, char* argv[]) {
         int i = 0;
         time_t start;
         time(&start);
-        while (hangmanPlaying) {
+        while (!quit) {
             SDL_Event e;
             if (SDL_PollEvent(&e)) {
                 if (e.type == SDL_QUIT || (e.type == SDL_KEYUP && e.key.keysym.sym == SDLK_ESCAPE)) {
                     hangmanPlaying = false;
+                    quit = true;
                     break;
                 } else if (e.type == SDL_KEYUP &&
                            (e.key.keysym.sym == SDLK_RETURN ||
