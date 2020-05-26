@@ -61,3 +61,62 @@
 1521634280 d:\coding\leconglich_19021479\2. ltnc\week06\utility.h
 	<string>
 
+1521634280 source:d:\coding\leconglich_19021479\laptrinhnangcao\hangman\utility.cpp
+	<iostream>
+	<fstream>
+	<vector>
+	<algorithm>
+
+1590484472 source:d:\coding\leconglich_19021479\laptrinhnangcao\hangman\draw.cpp
+	<iostream>
+	<cstdlib>
+	<vector>
+	<thread>
+	<ctime>
+	"DrawSDL.h"
+
+1590508451 source:d:\coding\leconglich_19021479\laptrinhnangcao\hangman\hangman3.0.cpp
+	<SDL.h>
+	<SDL_ttf.h>
+	<algorithm>
+	<chrono>
+	<cstdlib>
+	<ctime>
+	<fstream>
+	<iostream>
+	<string>
+	<thread>
+	<vector>
+	"DrawSDL.h"
+	"draw.h"
+	"painter.h"
+	"utility.h"
+
+1588744049 d:\coding\leconglich_19021479\laptrinhnangcao\hangman\draw.h
+	<string>
+	<ctime>
+
+1521634280 d:\coding\leconglich_19021479\laptrinhnangcao\hangman\utility.h
+	<string>
+
+1590496330 source:d:\coding\leconglich_19021479\laptrinhnangcao\hangman\drawsdl.cpp
+	<iostream>
+	<SDL.h>
+	<SDL_ttf.h>
+
+1590482960 d:\coding\leconglich_19021479\laptrinhnangcao\hangman\drawsdl.h
+	<SDL.h>
+
+1590502702 source:d:\coding\leconglich_19021479\laptrinhnangcao\hangman\painter.cpp
+	<SDL_image.h>
+	<cmath>
+	<cstdlib>
+	<iostream>
+	<SDL_ttf.h>
+	"painter.h"
+
+1590500607 d:\coding\leconglich_19021479\laptrinhnangcao\hangman\painter.h
+	<string>
+	<SDL.h>
+	<SDL_ttf.h>
+

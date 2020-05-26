@@ -4,6 +4,8 @@
 #include <thread>
 #include <ctime>
 
+#include "DrawSDL.h"
+
 using namespace std;
 
 

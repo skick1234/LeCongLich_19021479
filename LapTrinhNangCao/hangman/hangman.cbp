@@ -32,15 +32,49 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<ExtraCommands>
+			<Add after='cmd /c copy &quot;$(PROJECT_DIR)*.dll&quot; &quot;$(TARGET_OUTPUT_DIR)&quot;' />
+			<Add after='cmd /c copy &quot;$(PROJECT_DIR)*.ttf&quot; &quot;$(TARGET_OUTPUT_DIR)&quot;' />
+			<Add after='cmd /c copy &quot;$(PROJECT_DIR)*.png&quot; &quot;$(TARGET_OUTPUT_DIR)&quot;' />
+			<Add after='cmd /c copy &quot;$(PROJECT_DIR)*.txt&quot; &quot;$(TARGET_OUTPUT_DIR)&quot;' />
+			<Mode after="always" />
+		</ExtraCommands>
+		<Unit filename="DrawSDL.cpp" />
+		<Unit filename="DrawSDL.h" />
+		<Unit filename="SDL2.dll" />
+		<Unit filename="SDL2_image.dll" />
+		<Unit filename="SDL2_ttf.dll" />
+		<Unit filename="VeraMoBd.ttf" />
 		<Unit filename="draw.cpp" />
 		<Unit filename="draw.h" />
+		<Unit filename="free0.png" />
+		<Unit filename="free1.png" />
+		<Unit filename="free2.png" />
+		<Unit filename="free3.png" />
+		<Unit filename="hang0.png" />
+		<Unit filename="hang1.png" />
+		<Unit filename="hang2.png" />
+		<Unit filename="hang3.png" />
+		<Unit filename="hang4.png" />
+		<Unit filename="hang5.png" />
+		<Unit filename="hang6.png" />
+		<Unit filename="hang7.png" />
+		<Unit filename="hanged0.png" />
+		<Unit filename="hanged1.png" />
+		<Unit filename="hanged2.png" />
+		<Unit filename="hanged3.png" />
 		<Unit filename="hangman3.0.cpp" />
+		<Unit filename="libfreetype-6.dll" />
+		<Unit filename="libjpeg-9.dll" />
+		<Unit filename="libpng16-16.dll" />
+		<Unit filename="libtiff-5.dll" />
+		<Unit filename="libwebp-7.dll" />
+		<Unit filename="painter.cpp" />
+		<Unit filename="painter.h" />
 		<Unit filename="utility.cpp" />
 		<Unit filename="utility.h" />
-		<Extensions>
-			<code_completion />
-			<envvars />
-			<debugger />
-		</Extensions>
+		<Unit filename="words.txt" />
+		<Unit filename="zlib1.dll" />
+		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
