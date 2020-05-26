@@ -63,7 +63,7 @@
 		<Unit filename="hanged1.png" />
 		<Unit filename="hanged2.png" />
 		<Unit filename="hanged3.png" />
-		<Unit filename="hangman3.0.cpp" />
+		<Unit filename="hangman.cpp" />
 		<Unit filename="libfreetype-6.dll" />
 		<Unit filename="libjpeg-9.dll" />
 		<Unit filename="libpng16-16.dll" />
