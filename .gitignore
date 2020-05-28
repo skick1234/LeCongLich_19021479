@@ -1,4 +1,4 @@
 *.exe
 *.o
-*/obj
-*/bin
+obj/
+bin/
