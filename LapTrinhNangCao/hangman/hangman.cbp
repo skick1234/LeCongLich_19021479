@@ -13,6 +13,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="../hangman" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -22,6 +23,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="../hangman" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -41,9 +43,13 @@
 		</ExtraCommands>
 		<Unit filename="DrawSDL.cpp" />
 		<Unit filename="DrawSDL.h" />
+		<Unit filename="Game.cpp" />
+		<Unit filename="Game.h" />
 		<Unit filename="SDL2.dll" />
 		<Unit filename="SDL2_image.dll" />
 		<Unit filename="SDL2_ttf.dll" />
+		<Unit filename="SkickSDL.cpp" />
+		<Unit filename="SkickSDL.h" />
 		<Unit filename="VeraMoBd.ttf" />
 		<Unit filename="draw.cpp" />
 		<Unit filename="draw.h" />

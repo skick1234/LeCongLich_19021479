@@ -3,9 +3,10 @@
 
 #pragma once
 
-#include <string>
 #include <SDL.h>
 #include <SDL_ttf.h>
+
+#include <string>
 
 const SDL_Color CYAN_COLOR = {0, 255, 255};
 const SDL_Color BLUE_COLOR = {0, 0, 255};
@@ -72,8 +73,8 @@ class Painter {
     void createParallelogram(float size);
 
     SDL_Texture* loadTexture(std::string path);
-    SDL_Texture* textTexture(std::string text, SDL_Rect *srcRest, SDL_Rect *desRect, float _x = 0, float _y = 0);
+    SDL_Texture* textTexture(std::string text, SDL_Rect* srcRest, SDL_Rect* desRect, float _x = 0, float _y = 0);
     bool createImage(SDL_Texture* texture);
 };
 
-#endif // PAINTER_H_INCLUDED 19021479
+#endif  // PAINTER_H_INCLUDED 19021479

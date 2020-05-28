@@ -1,14 +1,16 @@
+#include "painter.h"
+
 #include <SDL_image.h>
+#include <SDL_ttf.h>
+
 #include <cmath>
 #include <cstdlib>
 #include <iostream>
-#include <SDL_ttf.h>
-
-#include "painter.h"
 
 using namespace std;
 
-Painter::Painter(SDL_Window* window, SDL_Renderer* renderer_, TTF_Font* font_) : renderer(renderer_), font(font_) {
+Painter::Painter(SDL_Window* window = nullptr, SDL_Renderer* renderer_ = nullptr, TTF_Font* font_ = nullptr) : renderer(renderer_), font(font_) {
+    if (window = nullptr) return;
     SDL_RenderGetLogicalSize(renderer, &width, &height);
     if (width == 0 && height == 0)
         SDL_GetWindowSize(window, &width, &height);
@@ -120,8 +122,8 @@ SDL_Texture* Painter::loadTexture(string path) {
     return newTexture;
 }
 
-SDL_Texture* Painter::textTexture(string text, SDL_Rect *srcRest, SDL_Rect *desRect, float _x, float _y) {
-    SDL_Color fg = { 0, 0, 0 };
+SDL_Texture* Painter::textTexture(string text, SDL_Rect* srcRest, SDL_Rect* desRect, float _x, float _y) {
+    SDL_Color fg = {0, 0, 0};
     SDL_Surface* surface = TTF_RenderText_Blended(font, text.c_str(), fg);
     SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
     SDL_FreeSurface(surface);

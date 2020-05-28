@@ -1,0 +1,23 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/LapTrinhNangCao/hangman/SDL2_ttf-2.0.15/i686-w64-mingw32/include/SDL2",
+                "${workspaceFolder}/LapTrinhNangCao/hangman/SDL2-2.0.12/i686-w64-mingw32/include/SDL2",
+                "${workspaceFolder}/LapTrinhNangCao/hangman/SDL2_image-2.0.5/i686-w64-mingw32/include/SDL2"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "compilerPath": "C:\\MinGW\\bin\\gcc.exe",
+            "cStandard": "c11",
+            "cppStandard": "gnu++14",
+            "intelliSenseMode": "clang-x86"
+        }
+    ],
+    "version": 4
+}

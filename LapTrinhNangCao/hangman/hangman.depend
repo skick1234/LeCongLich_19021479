@@ -107,20 +107,20 @@
 1590482960 d:\coding\leconglich_19021479\laptrinhnangcao\hangman\drawsdl.h
 	<SDL.h>
 
-1590502702 source:d:\coding\leconglich_19021479\laptrinhnangcao\hangman\painter.cpp
+1590641683 source:d:\coding\leconglich_19021479\laptrinhnangcao\hangman\painter.cpp
+	"painter.h"
 	<SDL_image.h>
+	<SDL_ttf.h>
 	<cmath>
 	<cstdlib>
 	<iostream>
-	<SDL_ttf.h>
-	"painter.h"
 
-1590511542 d:\coding\leconglich_19021479\laptrinhnangcao\hangman\painter.h
-	<string>
+1590639621 d:\coding\leconglich_19021479\laptrinhnangcao\hangman\painter.h
 	<SDL.h>
 	<SDL_ttf.h>
+	<string>
 
-1590512374 source:d:\coding\leconglich_19021479\laptrinhnangcao\hangman\hangman.cpp
+1590642950 source:d:\coding\leconglich_19021479\laptrinhnangcao\hangman\hangman.cpp
 	<SDL.h>
 	<SDL_ttf.h>
 	<algorithm>
@@ -132,8 +132,30 @@
 	<string>
 	<thread>
 	<vector>
-	"DrawSDL.h"
-	"draw.h"
-	"painter.h"
+	"Game.h"
+	"SkickSDL.h"
+
+1590642367 source:d:\coding\leconglich_19021479\laptrinhnangcao\hangman\game.cpp
+	"Game.h"
+	<ctime>
+	"SkickSDL.h"
 	"utility.h"
+
+1590643288 d:\coding\leconglich_19021479\laptrinhnangcao\hangman\game.h
+	<ctime>
+	<string>
+	"SkickSDL.h"
+
+1590641899 d:\coding\leconglich_19021479\laptrinhnangcao\hangman\skicksdl.h
+	<SDL.h>
+	<SDL_ttf.h>
+	<iostream>
+	"painter.h"
+
+1590641915 source:d:\coding\leconglich_19021479\laptrinhnangcao\hangman\skicksdl.cpp
+	"SkickSDL.h"
+	<SDL.h>
+	<SDL_ttf.h>
+	<iostream>
+	"painter.h"
 
