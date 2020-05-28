@@ -1,18 +1,16 @@
-#include <iostream>
-#include <fstream>
-#include <vector>
 #include <algorithm>
+#include <fstream>
+#include <iostream>
+#include <vector>
 using namespace std;
 
-string normalize(const string& s)
-{
+string normalize(const string& s) {
     string news = s;
     transform(s.begin(), s.end(), news.begin(), ::tolower);
     return news;
 }
 
-string chooseWord(const string& fileName)
-{
+string chooseWord(const string& fileName) {
     vector<string> vocabulary;
     ifstream file(fileName);
     if (!file.is_open())
@@ -30,7 +28,6 @@ string chooseWord(const string& fileName)
     return n > 0 ? vocabulary[rand() % n] : "";
 }
 
-bool contains(string word, char guess)
-{
+bool contains(string word, char guess) {
     return (word.find(guess) != string::npos);
 }

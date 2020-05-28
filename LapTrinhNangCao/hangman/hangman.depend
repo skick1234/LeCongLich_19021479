@@ -61,11 +61,11 @@
 1521634280 d:\coding\leconglich_19021479\2. ltnc\week06\utility.h
 	<string>
 
-1521634280 source:d:\coding\leconglich_19021479\laptrinhnangcao\hangman\utility.cpp
-	<iostream>
-	<fstream>
-	<vector>
+1590644934 source:d:\coding\leconglich_19021479\laptrinhnangcao\hangman\utility.cpp
 	<algorithm>
+	<fstream>
+	<iostream>
+	<vector>
 
 1590484472 source:d:\coding\leconglich_19021479\laptrinhnangcao\hangman\draw.cpp
 	<iostream>
@@ -107,7 +107,7 @@
 1590482960 d:\coding\leconglich_19021479\laptrinhnangcao\hangman\drawsdl.h
 	<SDL.h>
 
-1590641683 source:d:\coding\leconglich_19021479\laptrinhnangcao\hangman\painter.cpp
+1590644038 source:d:\coding\leconglich_19021479\laptrinhnangcao\hangman\painter.cpp
 	"painter.h"
 	<SDL_image.h>
 	<SDL_ttf.h>
@@ -135,13 +135,13 @@
 	"Game.h"
 	"SkickSDL.h"
 
-1590642367 source:d:\coding\leconglich_19021479\laptrinhnangcao\hangman\game.cpp
+1590644890 source:d:\coding\leconglich_19021479\laptrinhnangcao\hangman\game.cpp
 	"Game.h"
 	<ctime>
 	"SkickSDL.h"
 	"utility.h"
 
-1590643288 d:\coding\leconglich_19021479\laptrinhnangcao\hangman\game.h
+1590644884 d:\coding\leconglich_19021479\laptrinhnangcao\hangman\game.h
 	<ctime>
 	<string>
 	"SkickSDL.h"
@@ -152,7 +152,7 @@
 	<iostream>
 	"painter.h"
 
-1590641915 source:d:\coding\leconglich_19021479\laptrinhnangcao\hangman\skicksdl.cpp
+1590644283 source:d:\coding\leconglich_19021479\laptrinhnangcao\hangman\skicksdl.cpp
 	"SkickSDL.h"
 	<SDL.h>
 	<SDL_ttf.h>

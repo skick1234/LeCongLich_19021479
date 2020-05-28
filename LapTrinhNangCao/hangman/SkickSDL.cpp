@@ -61,6 +61,5 @@ void SkickSDL::createImageTexture(string fileName) {
 }
 
 void SkickSDL::updateScreen() {
-    // SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderPresent(renderer);
 }

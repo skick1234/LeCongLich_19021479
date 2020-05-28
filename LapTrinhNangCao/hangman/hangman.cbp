@@ -41,8 +41,6 @@
 			<Add after='cmd /c copy &quot;$(PROJECT_DIR)*.txt&quot; &quot;$(TARGET_OUTPUT_DIR)&quot;' />
 			<Mode after="always" />
 		</ExtraCommands>
-		<Unit filename="DrawSDL.cpp" />
-		<Unit filename="DrawSDL.h" />
 		<Unit filename="Game.cpp" />
 		<Unit filename="Game.h" />
 		<Unit filename="SDL2.dll" />
@@ -51,8 +49,6 @@
 		<Unit filename="SkickSDL.cpp" />
 		<Unit filename="SkickSDL.h" />
 		<Unit filename="VeraMoBd.ttf" />
-		<Unit filename="draw.cpp" />
-		<Unit filename="draw.h" />
 		<Unit filename="free0.png" />
 		<Unit filename="free1.png" />
 		<Unit filename="free2.png" />
@@ -69,12 +65,12 @@
 		<Unit filename="hanged1.png" />
 		<Unit filename="hanged2.png" />
 		<Unit filename="hanged3.png" />
-		<Unit filename="hangman.cpp" />
 		<Unit filename="libfreetype-6.dll" />
 		<Unit filename="libjpeg-9.dll" />
 		<Unit filename="libpng16-16.dll" />
 		<Unit filename="libtiff-5.dll" />
 		<Unit filename="libwebp-7.dll" />
+		<Unit filename="main.cpp" />
 		<Unit filename="painter.cpp" />
 		<Unit filename="painter.h" />
 		<Unit filename="utility.cpp" />

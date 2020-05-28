@@ -5,12 +5,11 @@
 #include "SkickSDL.h"
 #include "utility.h"
 
-Game::Game(SkickSDL* SkickSDL, int time): SDL(SkickSDL), playTime(time) {
+Game::Game(SkickSDL* SkickSDL, int time) : SDL(SkickSDL), playTime(time) {
     playing = true;
     win = 0;
     lose = 0;
 }
-
 
 void Game::startGame() {
     quit = false;
@@ -32,15 +31,11 @@ void Game::initWord() {
         playing = false;
         quit = true;
     }
-    cout << word << endl;
 }
 
-void Game::guess(char g) {
-    guessChar = g;
-}
-
-void Game::guessEvent(SDL_Event event) {
-    guess('~');
+void Game::guessEvent() {
+    SDL_Event event;
+    guessChar = '~';
     if (SDL_PollEvent(&event)) {
         if (event.type == SDL_QUIT) {
             playing = false;
@@ -73,7 +68,7 @@ void Game::badGuessed() {
 }
 
 bool Game::guessing() {
-    return badGuessCount < MAX_BAD_GUESS && guessedWord != word && timeLeft > 0;
+    return badGuessCount < MAX_BAD_GUESS && guessedWord != word && timeLeft > 0 && playing;
 }
 
 void Game::updateTime() {
@@ -105,7 +100,7 @@ void Game::updateSuggest() {
         for (int i = 0; i < n; i++)
             if (guessedWord[i] == '-')
                 suggest++;
-        maxSuggest = suggest / 2;
+        maxSuggest = suggest / 2 + suggested;
     }
 }
 
@@ -120,7 +115,6 @@ void Game::getSuggest() {
             }
         }
     }
-    updateSuggest();
 }
 
 void Game::renderGameSDL() {
@@ -130,16 +124,16 @@ void Game::renderGameSDL() {
     SDL->createTextTexture("Lose: " + to_string(lose), 750, 85);
     SDL->createTextTexture("Current Guess    :     " + guessedWord, 100, 750);
     SDL->createTextTexture("Bad Guesses      :     " + badGuess, 100, 800);
-    SDL->createTextTexture("Used suggestions :     " + to_string(suggested) + "/" + to_string(maxSuggest) + " (Press 'Space')", 100, 850);
+    SDL->createTextTexture("Used suggestions :     " + to_string(suggested) + "/" + to_string(maxSuggest) + "   (Press 'Space')", 100, 850);
     SDL->updateScreen();
 }
 
 void Game::renderGameOverSDL(int imageIndex) {
     string status = (guessedWord == word ? "free" : "hanged");
     SDL->createImageTexture(status + to_string(imageIndex) + ".png");
-    SDL->createTextTexture("Win : " + to_string(win), 750, 45);
     if (timeLeft <= 0)
         SDL->createTextTexture("Time Up!!!", 750, 5);
+    SDL->createTextTexture("Win : " + to_string(win), 750, 45);
     SDL->createTextTexture("Lose: " + to_string(lose), 750, 85);
     if (guessedWord == word)
         SDL->createTextTexture("Congrats!!! You are free.", 100, 750);

@@ -27,12 +27,11 @@ class Game {
    public:
     bool playing;
     Game(SkickSDL* SkickSDL, int time);
-    void guess(char g);
     void getSuggest();
     void updateGuessedWord();
     void updateSuggest();
     bool guessing();
-    void guessEvent(SDL_Event e);
+    void guessEvent();
     void handleGuess();
     void updateTime();
     void initWord();
