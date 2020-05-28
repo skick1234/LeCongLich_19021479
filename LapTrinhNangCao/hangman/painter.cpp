@@ -10,7 +10,7 @@
 using namespace std;
 
 Painter::Painter(SDL_Window* window = nullptr, SDL_Renderer* renderer_ = nullptr, TTF_Font* font_ = nullptr) : renderer(renderer_), font(font_) {
-    if (window = nullptr) return;
+    if (window == nullptr) return;
     SDL_RenderGetLogicalSize(renderer, &width, &height);
     if (width == 0 && height == 0)
         SDL_GetWindowSize(window, &width, &height);
