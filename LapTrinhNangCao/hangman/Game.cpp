@@ -35,7 +35,7 @@ void Game::initWord() {
 
 void Game::guessEvent() {
     SDL_Event event;
-    guessChar = '~';
+    guessChar = ' ';
     if (SDL_PollEvent(&event)) {
         if (event.type == SDL_QUIT) {
             playing = false;
@@ -53,7 +53,7 @@ void Game::guessEvent() {
 }
 
 void Game::handleGuess() {
-    if (guessChar == '~') return;
+    if (guessChar == ' ') return;
     if (guessChar == '$')
         getSuggest();
     else if (contains(word, guessChar)) {
