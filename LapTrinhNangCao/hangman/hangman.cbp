@@ -32,6 +32,7 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
+			<Add option="-std=gnu++14" />
 			<Add option="-fexceptions" />
 		</Compiler>
 		<ExtraCommands>

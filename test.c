@@ -1,46 +1,56 @@
+#include <stdio.h>
+#include <ctype.h>
+#include <string.h>
 
-#include<stdio.h>
-
-void nhap(int a[], int *n){
-    scanf("%d", n);
-    int i;
-    for(i=0;i<*n;i++){
-        scanf("%d", &a[i]);
-    }
+int isSumSub(char c) {
+    if (c == '+' || c == '-')
+        return 1;
+    return 0;
 }
 
-void selectionSort(int a[], int n){
-    int i,j,min;
-    for(i=0;i<n-1;i++){
-        min = i;
-        for(j=i+1;j<n;j++){
-            if(a[j] < a[min]){
-                min = j;
-            }
+int isMulDiv(char c) {
+    if (c == '*' || c == '/')
+        return 1;
+    return 0;
+}
+
+int isMathChar(char c) {
+    if (isMulDiv(c) || isSumSub(c))
+        return 1;
+    return 0;
+}
+
+int isValidChar(char c) {
+    if (isalnum(c) || isMathChar(c) || c == '(' || c == ')')
+        return 1;
+    return 0;
+}
+
+int main() {
+    char str[50];
+    gets(str);
+    fflush(stdin);
+    int i = 0, mo = 0, dong = 0, flag = 1;
+
+    while (str[i] != '\0' && flag) {
+        if (!isValidChar(str[i]))
+            flag = 0;
+        else if (str[i] == '(') {
+            mo++;
+            if (!str[i + 1] || isMulDiv(str[i + 1]) || str[i + 1] == ')') flag = 0;
+        } else if (str[i] == ')') {
+            dong++;
+            if (!i || (str[i+1] && !isMathChar(str[i + 1]))) flag = 0;
+        } else if (isSumSub(str[i])) {
+            if (!str[i + 1] || isMulDiv(str[i + 1]) || str[i + 1] == ')') flag = 0;
+        } else if (isMulDiv(str[i])) {
+            if (!i || !str[i + 1] || str[i + 1] == ')') flag = 0;
+        } else {
+            if (str[i + 1] && (isalnum(str[i + 1]) || str[i + 1] == '(')) flag = 0;
         }
-        int tmp = a[i];
-        a[i] = a[min];
-        a[min] = tmp;
+        i++;
     }
-}
-
-void xuat(int a[], int n ){
-    int i;
-     for(i = 0; i < n; i++){
-         printf("%5d", a[i]);
-    }
-     printf("\n");
-}
-
-int main(){
-    int n;
-    int a[10];
-    
-    nhap(a, &n);
-    
-    selectionSort(a, n);
-    xuat(a, n);
-    
-
+    if (mo != dong) flag = 0;
+    printf("%d",flag);
     return 0;
 }
