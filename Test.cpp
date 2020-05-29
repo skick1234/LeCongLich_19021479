@@ -2,15 +2,11 @@
 using namespace std;
 
 int main() {
-    int n;
+    int a;
     do {
-        cout << "Nhap N ( N>0 ) = ";
-        cin >> n;
-    } while (n <= 0);
-    cout << "Tong cac so nguyen le nho hon N = ";
-    int sum = 0;
-    for (int i = 1; i < n; i+=2)
-        sum+=i;
-    cout << sum;
+        cout << "Nhap a thoa man 4<=a<=6: ";
+        cin >> a;
+    } while (4>a || a>6);
+    cout << "a = " << a;
     return 0;
 }
