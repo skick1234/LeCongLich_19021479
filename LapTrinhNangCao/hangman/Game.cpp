@@ -19,7 +19,7 @@ void Game::startGame() {
     badGuessCount = 0;
     badGuess = "";
     suggested = 0;
-    maxSuggest = word.length() / 2;
+    maxSuggest = word.length() / 3;
     time(&startTime);
 }
 
@@ -56,9 +56,10 @@ void Game::handleGuess() {
     if (guessChar == '~') return;
     if (guessChar == '$')
         getSuggest();
-    else if (contains(word, guessChar))
+    else if (contains(word, guessChar)) {
         updateGuessedWord();
-    else if (!contains(badGuess, guessChar))
+        updateSuggest();
+    } else if (!contains(badGuess, guessChar))
         badGuessed();
 }
 
@@ -91,7 +92,6 @@ void Game::updateGuessedWord() {
         if (word[i] == guessChar)
             guessedWord[i] = guessChar;
     }
-    updateSuggest();
 }
 
 void Game::updateSuggest() {
@@ -100,17 +100,18 @@ void Game::updateSuggest() {
         for (int i = 0; i < n; i++)
             if (guessedWord[i] == '-')
                 suggest++;
-        maxSuggest = suggest / 2 + suggested;
+        maxSuggest = suggest / 3;
     }
 }
 
 void Game::getSuggest() {
     if (suggested < maxSuggest) {
         suggested++;
-        int n = guessedWord.length();
-        for (int i = 0; i < n; i++) {
+        while (true) {
+            int i = rand() % guessedWord.length();
             if (guessedWord[i] == '-') {
-                guessedWord[i] = word[i];
+                guessChar = word[i];
+                updateGuessedWord();
                 break;
             }
         }

@@ -34,7 +34,16 @@
 			<Add option="-Wall" />
 			<Add option="-std=gnu++14" />
 			<Add option="-fexceptions" />
+			<Add directory="SDL2_image-2.0.5/i686-w64-mingw32/include/SDL2" />
+			<Add directory="SDL2_ttf-2.0.15/i686-w64-mingw32/include/SDL2" />
+			<Add directory="SDL2-2.0.12/i686-w64-mingw32/include/SDL2" />
 		</Compiler>
+		<Linker>
+			<Add option="-lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_ttf" />
+			<Add directory="SDL2-2.0.12/i686-w64-mingw32/lib" />
+			<Add directory="SDL2_ttf-2.0.15/i686-w64-mingw32/lib" />
+			<Add directory="SDL2_image-2.0.5/i686-w64-mingw32/lib" />
+		</Linker>
 		<ExtraCommands>
 			<Add after='cmd /c copy &quot;$(PROJECT_DIR)*.dll&quot; &quot;$(TARGET_OUTPUT_DIR)&quot;' />
 			<Add after='cmd /c copy &quot;$(PROJECT_DIR)*.ttf&quot; &quot;$(TARGET_OUTPUT_DIR)&quot;' />
