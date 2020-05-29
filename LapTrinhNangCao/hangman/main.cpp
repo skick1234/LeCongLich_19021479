@@ -3,7 +3,7 @@
 
 using namespace std;
 
-const int PLAY_TIME = 90;
+const int PLAY_TIME = 60;
 const int SCREEN_WIDTH = 950;
 const int SCREEN_HEIGHT = 900;
 const string WINDOW_TITLE = "Hangman";
