@@ -3,10 +3,7 @@
         {
             "name": "Win32",
             "includePath": [
-                "${workspaceFolder}/**",
-                "${workspaceFolder}/LapTrinhNangCao/hangman/SDL2_ttf-2.0.15/i686-w64-mingw32/include/SDL2",
-                "${workspaceFolder}/LapTrinhNangCao/hangman/SDL2-2.0.12/i686-w64-mingw32/include/SDL2",
-                "${workspaceFolder}/LapTrinhNangCao/hangman/SDL2_image-2.0.5/i686-w64-mingw32/include/SDL2"
+                "${workspaceFolder}/**"
             ],
             "defines": [
                 "_DEBUG",
