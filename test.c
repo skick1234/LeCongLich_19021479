@@ -1,56 +1,38 @@
 #include <stdio.h>
-#include <ctype.h>
+#include <stdlib.h>
 #include <string.h>
 
-int isSumSub(char c) {
-    if (c == '+' || c == '-')
-        return 1;
-    return 0;
-}
-
-int isMulDiv(char c) {
-    if (c == '*' || c == '/')
-        return 1;
-    return 0;
-}
-
-int isMathChar(char c) {
-    if (isMulDiv(c) || isSumSub(c))
-        return 1;
-    return 0;
-}
-
-int isValidChar(char c) {
-    if (isalnum(c) || isMathChar(c) || c == '(' || c == ')')
-        return 1;
-    return 0;
-}
-
 int main() {
-    char str[50];
-    gets(str);
-    fflush(stdin);
-    int i = 0, mo = 0, dong = 0, flag = 1;
-
-    while (str[i] != '\0' && flag) {
-        if (!isValidChar(str[i]))
-            flag = 0;
-        else if (str[i] == '(') {
-            mo++;
-            if (!str[i + 1] || isMulDiv(str[i + 1]) || str[i + 1] == ')') flag = 0;
-        } else if (str[i] == ')') {
-            dong++;
-            if (!i || (str[i+1] && !isMathChar(str[i + 1]))) flag = 0;
-        } else if (isSumSub(str[i])) {
-            if (!str[i + 1] || isMulDiv(str[i + 1]) || str[i + 1] == ')') flag = 0;
-        } else if (isMulDiv(str[i])) {
-            if (!i || !str[i + 1] || str[i + 1] == ')') flag = 0;
-        } else {
-            if (str[i + 1] && (isalnum(str[i + 1]) || str[i + 1] == '(')) flag = 0;
-        }
-        i++;
+    int n, i;
+    FILE *fptr;
+    fptr = fopen("G:\\TDIEN", "a");
+    printf("Nhap so ban ghi: ");
+    scanf("%d", &n);
+    char tch[50];
+    char lh[15];
+    int csd, csc, tt;
+    for (i = 0; i < n; i++) {
+        printf("%d. Ten chu ho: ", i + 1);
+        fflush(stdin);
+        fgets(tch, 50, stdin);
+        fflush(stdin);
+        printf("Loai ho: ");
+        fgets(lh, 15, stdin);
+        printf("Chi so dau: ");
+        scanf("%d", &csd);
+        printf("Chi so cuoi: ");
+        scanf("%d", &csc);
+        tt = 0;
+        strtok(tch, "\n");
+        strtok(lh, "\n");
+        if (strcmp(lh, "Gia dinh") == 0)
+            tt = 50000 + 450 * (csc - csd);
+        else if (strcmp(lh, "Kinh doanh") == 0)
+            tt = 60000 + 600 * (csc - csd);
+        else if (strcmp(lh, "San xuat") == 0)
+            tt = 70000 + 500 * (csc - csd);
+        fprintf(fptr, "%s | %s | %d | %d | %d\n", tch, lh, csd, csc, tt);
     }
-    if (mo != dong) flag = 0;
-    printf("%d",flag);
+    fclose(fptr);
     return 0;
 }
