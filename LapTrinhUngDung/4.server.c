@@ -15,8 +15,6 @@
 #include <stdlib.h>
 #include <signal.h>
 
-void handleNewProcess() {}
-
 int main(int argc, char *argv[])
 {
   int clientSocketDescriptor, socketDescriptor;
@@ -48,7 +46,7 @@ int main(int argc, char *argv[])
         if (strcmp(recvBuffer, "END\n") == 0)
         {
           close(clientSocketDescriptor);
-          kill(cpid, SIGQUIT);
+          kill(getpid(), SIGQUIT);
         }
       }
     }
