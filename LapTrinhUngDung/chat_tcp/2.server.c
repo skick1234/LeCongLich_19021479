@@ -8,9 +8,11 @@
 #include <stdlib.h>
 #include <signal.h>
 #include <unistd.h>
+#define PORT 2222
 
 int main(int argc, char *argv[])
 {
+  system("clear");
   int clientSocketDescriptor, socketDescriptor;
   struct sockaddr_in serverAddress, clientAddress;
   socklen_t clientLength;
@@ -19,25 +21,34 @@ int main(int argc, char *argv[])
   bzero(&serverAddress, sizeof(serverAddress));
   serverAddress.sin_family = AF_INET;
   serverAddress.sin_addr.s_addr = htonl(INADDR_ANY);
-  serverAddress.sin_port = htons(1234);
+  serverAddress.sin_port = htons(PORT);
   socketDescriptor = socket(AF_INET, SOCK_STREAM, 0);
   bind(socketDescriptor, (struct sockaddr *)&serverAddress, sizeof(serverAddress));
   listen(socketDescriptor, 5);
-  printf("Server is running ...\n");
+  printf("%s\n", "Server is running ...\n");
+  fflush(stdout);
   clientSocketDescriptor = accept(socketDescriptor, (struct sockaddr *)&clientAddress, &clientLength);
+
+  if (clientSocketDescriptor < 0)
+  {
+    perror("accept");
+    exit(1);
+  }
 
   while (1)
   {
     bzero(&sendBuffer, sizeof(sendBuffer));
-    printf("\nType your message here...\n");
+    printf("Enter your message: ");
+    fflush(stdout);
     fflush(stdin);
     fgets(sendBuffer, sizeof(sendBuffer), stdin);
+    sendBuffer[strcspn(sendBuffer, "\n")] = 0;
     send(clientSocketDescriptor, sendBuffer, sizeof(sendBuffer), 0);
-    if (strcmp(sendBuffer, "END\n") == 0)
+    if (strcmp(sendBuffer, "END") == 0)
     {
       close(clientSocketDescriptor);
       close(socketDescriptor);
-      kill(0, SIGQUIT);
+      kill(0, SIGSTOP);
     }
   }
   return 0;

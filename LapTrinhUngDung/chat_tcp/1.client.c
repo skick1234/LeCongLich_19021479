@@ -17,21 +17,28 @@ Thanks.
 // for including structures which will store information needed
 #include <netinet/in.h>
 #include <unistd.h>
+#define SIZE 1000
+#define PORT 1111
 
 // main functions
 int main()
 {
+  system("clear");
   int socketDescriptor = socket(AF_INET, SOCK_STREAM, 0);
   // server address
   struct sockaddr_in serverAddress;
   serverAddress.sin_family = AF_INET;
-  serverAddress.sin_port = htons(1234);
+  serverAddress.sin_port = htons(PORT);
   serverAddress.sin_addr.s_addr = INADDR_ANY;
 
   // communicates with listen
-  connect(socketDescriptor, (struct sockaddr *)&serverAddress, sizeof(serverAddress));
+  if (connect(socketDescriptor, (struct sockaddr *)&serverAddress, sizeof(serverAddress)) < 0)
+  {
+    perror("connect");
+    return 1;
+  }
 
-  char serverResponse[1000];
+  char serverResponse[SIZE];
   recv(socketDescriptor, &serverResponse, sizeof(serverResponse), 0);
   printf("Ther server sent the data : %s", serverResponse);
 

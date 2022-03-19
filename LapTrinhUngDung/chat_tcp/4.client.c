@@ -8,24 +8,29 @@
 #include <netdb.h>
 #include <arpa/inet.h>
 #include <signal.h>
+#define PORT 4444
+#define MAX_BUFFER_SIZE 1024
 
 int main()
 {
+  system("clear");
   FILE *fptr;
-  int socketDescriptor;
   struct sockaddr_in serverAddress;
-  char sendBuffer[1000], recvBuffer[1000];
-  pid_t cpid;
+  char sendBuffer[MAX_BUFFER_SIZE], recvBuffer[MAX_BUFFER_SIZE];
   bzero(&serverAddress, sizeof(serverAddress));
   serverAddress.sin_family = AF_INET;
   serverAddress.sin_addr.s_addr = inet_addr("127.0.0.1");
-  serverAddress.sin_port = htons(1234);
-  socketDescriptor = socket(AF_INET, SOCK_STREAM, 0);
+  serverAddress.sin_port = htons(PORT);
+  int socketDescriptor = socket(AF_INET, SOCK_STREAM, 0);
 
-  connect(socketDescriptor, (struct sockaddr *)&serverAddress, sizeof(serverAddress));
+  if (connect(socketDescriptor, (struct sockaddr *)&serverAddress, sizeof(serverAddress)) < 0)
+  {
+    perror("connect");
+    return 1;
+  }
   printf("\nConnected to server\n");
 
-  cpid = fork();
+  pid_t cpid = fork();
   if (cpid == 0)
   {
     while (1)
@@ -34,14 +39,15 @@ int main()
       printf("\nType your message here ...\n");
       fflush(stdin);
       fgets(sendBuffer, sizeof(sendBuffer), stdin);
+      sendBuffer[strcspn(sendBuffer, "\n")] = 0;
       send(socketDescriptor, sendBuffer, sizeof(sendBuffer), 0);
       fptr = fopen("client.txt", "a");
-      fprintf(fptr, "CLIENT : %s", sendBuffer);
+      fprintf(fptr, "CLIENT : %s\n", sendBuffer);
       fclose(fptr);
-      if (strcmp(sendBuffer, "END\n") == 0)
+      if (strcmp(sendBuffer, "END") == 0)
       {
         close(socketDescriptor);
-        kill(0, SIGQUIT);
+        kill(0, SIGSTOP);
       }
     }
   }
@@ -51,14 +57,14 @@ int main()
     {
       bzero(&recvBuffer, sizeof(recvBuffer));
       recv(socketDescriptor, recvBuffer, sizeof(recvBuffer), 0);
-      printf("\nSERVER : %s", recvBuffer);
+      printf("\nSERVER : %s\n", recvBuffer);
       fptr = fopen("client.txt", "a");
-      fprintf(fptr, "SERVER : %s", recvBuffer);
+      fprintf(fptr, "SERVER : %s\n", recvBuffer);
       fclose(fptr);
-      if (strcmp(recvBuffer, "END\n") == 0)
+      if (strcmp(recvBuffer, "END") == 0)
       {
         close(socketDescriptor);
-        kill(0, SIGQUIT);
+        kill(0, SIGSTOP);
       }
     }
   }

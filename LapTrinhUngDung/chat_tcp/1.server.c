@@ -13,9 +13,11 @@ Thanks.
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <unistd.h>
+#define PORT 1111
 
 int main()
 {
+  system("clear");
   char serverMessage[256] = "You have a missed call from server\n";
 
   // create the server socket
@@ -25,7 +27,7 @@ int main()
   // creating the address as same way we have created for TCPclient
   struct sockaddr_in serverAddress;
   serverAddress.sin_family = AF_INET;
-  serverAddress.sin_port = htons(1234);
+  serverAddress.sin_port = htons(1111);
   serverAddress.sin_addr.s_addr = INADDR_ANY;
 
   // calling bind function to oir specified IP and port
